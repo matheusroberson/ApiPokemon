@@ -18,7 +18,7 @@ namespace ApiPokemon.Controllers
     public class PokemonController : ControllerBase
     {
         [HttpGet]
-        [Route("{id:int}")]
+        [Route("{id}")]
         public async Task<ActionResult<PokeApi>> GetPokemon(string id)
         {
             PokeApi pokemon = null;
