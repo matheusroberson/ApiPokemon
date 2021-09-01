@@ -47,10 +47,15 @@ namespace ApiPokemon.Models
         public Chain chain { get; set; }
     }
 
+    public class ModelPokeResult
+    {
+        public string url { get; set; }
+
+    }
 
     public class PokeResult
     {
-        public List<ModelDefault> results { get; set; }
+        public List<ModelPokeResult> results { get; set; }
     }
 
     public class PokeEvolutions
