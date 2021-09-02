@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -50,9 +51,16 @@ namespace ApiPokemon.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Pokemons.Add(model);
-                await context.SaveChangesAsync();
-                return model;
+                try
+                {
+                    context.Pokemons.Add(model);
+                    await context.SaveChangesAsync();
+                    return model;
+                }
+                catch (Exception ex)
+                {
+                    throw new ApplicationException("Something wrong happened in the register database:", ex);
+                }
             }
             else
             {

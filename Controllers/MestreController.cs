@@ -1,8 +1,9 @@
-using System.Net;
+using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ApiPokemon.Data;
 using ApiPokemon.Models;
 
@@ -21,9 +22,16 @@ namespace ApiPokemon.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Mestres.Add(model);
-                await context.SaveChangesAsync();
-                return model;
+                try
+                {
+                    context.Mestres.Add(model);
+                    await context.SaveChangesAsync();
+                    return model;
+                }
+                catch (Exception ex)
+                {
+                    throw new ApplicationException("Something wrong happened in the register database:", ex);
+                }
             }
             else
             {
