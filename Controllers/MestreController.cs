@@ -22,6 +22,16 @@ namespace ApiPokemon.Controllers
         {
             if (ModelState.IsValid)
             {
+                bool count = context.Mestres.Count() != 0;
+
+                if (count)
+                {
+                    bool mestre = await context.Mestres.FirstOrDefaultAsync(x => x.Cpf == "0" + model.Cpf) == null;
+
+                    if (!mestre)
+                        return BadRequest(ModelState);
+                }
+
                 try
                 {
                     context.Mestres.Add(model);
