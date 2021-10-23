@@ -56,3 +56,8 @@ GET - https://localhost:5001/v1/pokemon/mestre/{id} Pegar pokemoons capturados p
 
 > id: number
 
+## Eu aprendi:
+- Conceitos de .Net Core
+- Design pattern MVC
+- Entity Framework
+- & e muito mais
